@@ -6,7 +6,7 @@ This is a small test of an existing model. It does not propose a new method.
 
 ## Setup
 
-- **Data:** 100 clips from [LibriSpeech test-clean](https://www.openslr.org/12), taken from 38 different speakers. Each clip is a random 5-second window, converted to 16 kHz mono.
+- **Data:** 100 clips from _test-clean.tar.gz_ (https://www.openslr.org/12), taken from 38 different speakers. Each clip is a random 5-second window, converted to 16 kHz mono.
 - **Model:** AudioSeal `audioseal_wm_16bits` (generator) and `audioseal_detector_16bits` (detector), used as released, with no training or changes.
 - **Watermarking:** each clip gets a random 16-bit message embedded.
 - **Controls:** every attack is applied to both the watermarked clip and the original clean clip, so false alarms are measured under the same processing.
@@ -68,20 +68,24 @@ AUC values are rounded to three decimals, so 1.000 means "at or very near 1", no
 
 ## Reproducing
 
-Requirements: Python 3, [ffmpeg](https://ffmpeg.org/) available on your PATH (for the MP3 and Opus attacks), and the packages in `requirements.txt` (including `audioseal`, `torch`, `torchaudio`, `soundfile`, `pandas`, `scikit-learn` and `numpy`).
+Requirements:
+
+- Python 3.11.9 or newer
+- [ffmpeg] (https://ffmpeg.org/) available on your PATH, for the MP3 and Opus attacks (tested with 9.0.2, the Gyan.dev full build for Windows)
+- Python packages: `audioseal`, `torch`, `torchaudio`, `soundfile`, `pandas`, `scikit-learn`, `numpy` (tested with PyTorch 2.14.1, CPU build)
+
+Install the packages with:
 
 ```
-pip install -r requirements.txt
+pip install torch torchaudio audioseal soundfile pandas scikit-learn numpy
 ```
 
-1. Download LibriSpeech test-clean from https://www.openslr.org/12 and extract it.
-2. Set `DATA_DIR` at the top of `[your_script_name].py` to the extracted `test-clean` folder.
-3. Run `python [your_script_name].py`. It prints the summary table and writes `results.csv` and `summary.csv`.
+1. Download _test-clean.tar.gz_ from https://www.openslr.org/12 and extract it.
+2. Set `DATA_DIR` at the top of `main.py` to the extracted `test-clean` folder.
+3. Run `python main.py`. It prints the summary table and writes `results.csv` and `summary.csv`.
 
 The script sets `TORCHDYNAMO_DISABLE=1` because PyTorch's compile step needed a C++ compiler on my Windows machine and is not needed here. It ran on CPU.
 
 ## Credits
 
 Uses [AudioSeal](https://github.com/facebookresearch/audioseal) by Meta (San Roman et al., 2024) and the [LibriSpeech](https://www.openslr.org/12) corpus (Panayotov et al., 2015). Check each project's licence and citation requirements before reusing their code or data.
-
-Author: [your name]
