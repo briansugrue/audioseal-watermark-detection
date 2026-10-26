@@ -6,7 +6,7 @@ This is a small test of an existing model. It does not propose a new method.
 
 ## Setup
 
-- **Data:** 100 clips from _test-clean.tar.gz_ (https://www.openslr.org/12), taken from 38 different speakers. Each clip is a random 5-second window, converted to 16 kHz mono.
+- **Data:** 100 clips from **_test-clean.tar.gz_** (https://www.openslr.org/12), taken from 38 different speakers. Each clip is a random 5-second window, converted to 16 kHz mono.
 - **Model:** AudioSeal `audioseal_wm_16bits` (generator) and `audioseal_detector_16bits` (detector), used as released, with no training or changes.
 - **Watermarking:** each clip gets a random 16-bit message embedded.
 - **Controls:** every attack is applied to both the watermarked clip and the original clean clip, so false alarms are measured under the same processing.
