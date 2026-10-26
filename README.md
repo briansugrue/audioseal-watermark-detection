@@ -1,4 +1,4 @@
-# AudioSeal watermark detection: a small robustness test
+# audioseal-watermark-detection
 
 A short evaluation of how well the detector in Meta's [AudioSeal](https://github.com/facebookresearch/audioseal) (16-bit model) holds up when watermarked speech is degraded by noise, filtering, resampling and lossy compression. I wrote it to get hands-on experience with audio watermarking and detector evaluation.
 
