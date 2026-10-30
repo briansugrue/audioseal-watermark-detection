@@ -82,7 +82,7 @@ pip install torch torchaudio audioseal soundfile pandas scikit-learn numpy
 
 1. Download _test-clean.tar.gz_ from https://www.openslr.org/12 and extract it.
 2. Set `DATA_DIR` at the top of `main.py` to the extracted `test-clean` folder.
-3. Run `python main.py`. It prints the summary table and writes `results.csv` and `summary.csv`.
+3. Run `python main.py`. It prints the summary table and writes `100_clip_test_results.csv` and `summary.csv`.
 
 The script sets `TORCHDYNAMO_DISABLE=1` because PyTorch's compile step needed a C++ compiler on my Windows machine and is not needed here. It ran on CPU.
 
